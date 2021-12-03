@@ -2,10 +2,7 @@ package io.github.developerheart.quarkussocial.resources;
 
 import io.github.developerheart.quarkussocial.dto.UserRequest;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -16,11 +13,13 @@ public class UserResources {
 
     @POST
     public Response createUser(UserRequest userRequest ){
-        userRequest.setName("PROCESSADO");
+        userRequest.setName("PROCESSADO").setSexo('p').setIdade(50);
         return Response.status(Response.Status.OK).entity(userRequest).build();
+    }
 
-
-
+    @GET
+    public Response findAll(){
+        return Response.status(Response.Status.OK).build();
     }
 
 }
