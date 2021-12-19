@@ -2,26 +2,34 @@ package io.github.developerheart.quarkussocial.domain;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.StringJoiner;
 
 @Entity
-public class User {
+@Table(name = "usuario")
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "usuario_id")
 	private Long  id;
 
+	@Column(name = "NOME")
 	private String nome;
 
+	@Column(name = "sobrenome")
 	private String sobrenome;
 
+	@Column(name = "idade")
 	private Integer idade;
 
+	@Column(name = "sexo")
 	private Character sexo;
 
+	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 
 	public Long getId() {
