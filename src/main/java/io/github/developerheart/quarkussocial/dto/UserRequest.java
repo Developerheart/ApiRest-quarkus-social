@@ -3,13 +3,14 @@ package io.github.developerheart.quarkussocial.dto;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class UserRequest {
 
     private String name;
     private String sobrenome;
     private Integer idade;
-    private Timestamp birthDate;
+    private Date birthDate;
     private Character sexo;
 
     public UserRequest() {
@@ -84,5 +85,16 @@ public class UserRequest {
         result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
         result = 31 * result + (sexo != null ? sexo.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", UserRequest.class.getSimpleName() + "[", "]")
+                .add("name='" + name + "'")
+                .add("sobrenome='" + sobrenome + "'")
+                .add("idade=" + idade)
+                .add("birthDate=" + birthDate)
+                .add("sexo=" + sexo)
+                .toString();
     }
 }
