@@ -1,15 +1,18 @@
 package io.github.developerheart.quarkussocial.domain;
 
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 import java.util.StringJoiner;
 
 @Entity
 @Table(name = "usuario")
-public class User implements Serializable {
+public class User extends PanacheEntityBase implements Serializable  {
 	private static final long serialVersionUID = 1L;
 
 	@Id

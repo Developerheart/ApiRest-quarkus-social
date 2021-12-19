@@ -1,5 +1,8 @@
 package io.github.developerheart.quarkussocial.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.json.bind.annotation.JsonbDateFormat;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
@@ -10,12 +13,17 @@ public class UserRequest {
     private String name;
     private String sobrenome;
     private Integer idade;
+//    @JsonbDateFormat(value = "yyyy-MM-dd")
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-dd-MM")
     private Date birthDate;
     private Character sexo;
 
     public UserRequest() {
     }
 
+    public static void main(String[] args) {
+        System.out.println(new Date());
+    }
     public UserRequest(String name, String sobrenome, Integer idade, Timestamp birthDate, Character sexo) {
         this.name = name;
         this.sobrenome = sobrenome;
@@ -53,6 +61,10 @@ public class UserRequest {
 
     public Date getBirthDate() {
         return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public UserRequest setBirthDate(Timestamp birthDate) {
